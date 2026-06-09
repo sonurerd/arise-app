@@ -1,0 +1,17 @@
+services:
+  arise:
+    build: .
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      ARISE_DB_PATH: /data/arise.db
+    volumes:
+      - arise-data:/data
+    restart: unless-stopped
+
+volumes:
+  arise-data:
